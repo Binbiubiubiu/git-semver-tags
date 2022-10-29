@@ -6,7 +6,6 @@ authors = ["Binbiubiubiu<2632003786@qq.com>"]
 categories = ["command-line-interface"]
 keywords = [
   "git-semver-tags",
-  "order",
   "semver",
   "tag",
   "git-tag",
