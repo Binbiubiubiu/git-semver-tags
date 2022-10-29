@@ -1,0 +1,39 @@
+[package]
+name = "git-semver-tags"
+version = "0.0.0"
+description = "Get all git semver tags of your repository in reverse chronological order"
+authors = ["Binbiubiubiu<2632003786@qq.com>"]
+categories = ["command-line-interface"]
+keywords = [
+  "git-semver-tags",
+  "order",
+  "semver",
+  "tag",
+  "git-tag",
+  "git"
+]
+license = "MIT OR Apache-2.0"
+edition = "2021"
+rust-version = "1.60.0"  # MSRV
+documentation = "https://docs.rs/git-semver-tags"
+readme = "README.md"
+homepage = "https://serde.rs/"
+repository = "https://github.com/Binbiubiubiu/git-semver-tags"
+publish = ["crates.io"]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[[bin]]
+name = "git-semver-tags"
+
+[dependencies]
+clap = { version = "4.0.18", features = ["derive"] }
+lazy_static = "1.4.0"
+regex = "1.6.0"
+semver = "1.0.14"
+
+[dev-dependencies]
+anyhow = "1.0.66"
+tempdir = "0.3.7"
+trycmd = "0.13"
+snapbox = "0.4"
