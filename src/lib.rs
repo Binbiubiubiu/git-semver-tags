@@ -7,7 +7,7 @@
 //! ## Install
 //! 
 //! Run
-//! ``` 
+//! ``` Console
 //! $ cargo install git-semver-tags
 //! ```
 //! 
@@ -16,14 +16,14 @@
 //! 
 //! By default, it runs check. You can easily override this, though:
 //!
-//! ``` 
+//! ``` Console
 //! $ git-semver-tags [OPTIONS]
 //! ```
 //! 
 //! A few examples:
 //! 
 //! 
-//! ``` 
+//! ``` Console
 //! /// Run get all tags
 //! $ git-semver-tags
 //! 
@@ -46,7 +46,7 @@
 //! 
 //! There's a lot more you can do! Here's a copy of the help:
 //! 
-//! ``` 
+//! ``` Console
 //! Get all git semver tags of your repository in reverse chronological order
 //! 
 //! Usage: git-semver-tags [OPTIONS]
@@ -97,7 +97,7 @@ fn semver_valid(version: &str) -> bool {
 /// # Examples
 ///
 /// ```no_run
-/// use git-semver-tags::{captures, Args};
+/// use git_semver_tags::{captures, Args};
 /// use anyhow::Result;
 ///
 /// fn main() -> Result<()> {
