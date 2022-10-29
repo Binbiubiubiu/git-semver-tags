@@ -1,8 +1,66 @@
 #![deny(missing_docs)]
 
-//! # Documentation: Derive Reference
+//! # git-semver-tags
 //!
-//! > Get all git semver tags of your repository in reverse chronological order
+//! Get all git semver tags of your repository in reverse chronological order
+//! 
+//! ## Install
+//! 
+//! Run
+//! ``` 
+//! $ cargo install git-semver-tags
+//! ```
+//! 
+//! ## Usage
+//! 
+//! 
+//! By default, it runs check. You can easily override this, though:
+//!
+//! ``` 
+//! $ git-semver-tags [OPTIONS]
+//! ```
+//! 
+//! A few examples:
+//! 
+//! 
+//! ``` 
+//! /// Run get all tags
+//! $ git-semver-tags
+//! 
+//! /// Run to get lerna tag
+//! $ git-semver-tags --lerna
+//! 
+//! /// Run the lerna tag to get the specified package name
+//! $ git-semver-tags --lerna --package <package>
+//! 
+//! /// Runs get tag for the specified prefix
+//! $ git-semver-tags --tag-prefix <prefix>
+//! 
+//! /// Run get to ignore unstable tag
+//! $ git-semver-tags --skip-unstable  
+//! 
+//! /// Run get label under the specified path
+//! $ git-semver-tags --cwd <cwd>
+//! ```
+//! 
+//! 
+//! There's a lot more you can do! Here's a copy of the help:
+//! 
+//! ``` 
+//! Get all git semver tags of your repository in reverse chronological order
+//! 
+//! Usage: git-semver-tags [OPTIONS]
+//! 
+//! Options:
+//!     --lerna                parse lerna style git tags
+//!     --package <package>    when listing lerna style tags, filter by a package
+//!     --tag-prefix <prefix>  prefix to remove from the tags during their processing
+//!     --cwd <cwd>            the current path where the command was run
+//!     --skip-unstable        ignore unstable labels
+//!     -h, --help                 Print help information
+//!     -V, --version              Print version information
+//! 
+//! ```
 //!
 
 use lazy_static::lazy_static;
@@ -14,7 +72,6 @@ mod cli;
 mod macros;
 pub use cli::Args;
 
-/// isleerna
 fn is_lerna_tag<'a>(tag: &'a str, pkg: &Option<String>) -> bool {
     lazy_static! {
         static ref RE: Regex = format_regex!(r"^.+@[0-9]+\.[0-9]+\.[0-9]+(-.+)?$");
@@ -26,12 +83,31 @@ fn is_lerna_tag<'a>(tag: &'a str, pkg: &Option<String>) -> bool {
     }
 }
 
-/// semver_valid
 fn semver_valid(version: &str) -> bool {
+    let version = if version.starts_with("v") {
+        version.get(1..).unwrap()
+    } else {
+        version
+    };
     semver::Version::parse(version).is_ok()
 }
 
-/// git_semver_tags
+/// List the git tags in the project
+/// 
+/// # Examples
+///
+/// ```no_run
+/// use git-semver-tags::{captures, Args};
+/// use anyhow::Result;
+///
+/// fn main() -> Result<()> {
+///     let args = Args::default();
+///     for tag in captures(&args).iter() {
+///         println!("{}", tag);
+///     }
+///     Ok(())
+/// }
+/// ```
 pub fn captures(args: &Args) -> Vec<String> {
     lazy_static! {
         static ref TAG_RE: Regex = format_regex!(r"tag:\s*(.+?)[,)]");
@@ -60,7 +136,7 @@ pub fn captures(args: &Args) -> Vec<String> {
         std::io::stderr().write_all(&output.stderr).unwrap();
         std::process::exit(1);
     }
-    let output = String::from_utf8(output.stdout).expect("convert to String fail");
+    let output = String::from_utf8(output.stdout).expect("the stdout convert to String fail");
     return output
         .split("\n")
         .map(|decorations| {

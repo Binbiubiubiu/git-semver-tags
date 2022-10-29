@@ -34,6 +34,5 @@ semver = "1.0.14"
 
 [dev-dependencies]
 anyhow = "1.0.66"
-tempdir = "0.3.7"
-trycmd = "0.13"
-snapbox = "0.4"
+assert_cmd = "2.0.5"
+assert_fs = "1.0.7"

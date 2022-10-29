@@ -10,7 +10,7 @@ mod tests {
     #[test]
     fn test_format_regex() {
         assert_eq!(
-            format_regex!(r"^{}(.*)","v").to_string(),
+            format_regex!(r"^{}(.*)", "v").to_string(),
             regex::Regex::new(r"^v(.*)").unwrap().to_string()
         )
     }
