@@ -24,22 +24,22 @@
 //! 
 //! 
 //! ``` Console
-//! /// Run get all tags
+//! ## Run get all tags
 //! $ git-semver-tags
 //! 
-//! /// Run to get lerna tag
+//! ## Run to get lerna tag
 //! $ git-semver-tags --lerna
 //! 
-//! /// Run the lerna tag to get the specified package name
+//! ## Run the lerna tag to get the specified package name
 //! $ git-semver-tags --lerna --package <package>
 //! 
-//! /// Runs get tag for the specified prefix
+//! ## Runs get tag for the specified prefix
 //! $ git-semver-tags --tag-prefix <prefix>
 //! 
-//! /// Run get to ignore unstable tag
+//! ## Run get to ignore unstable tag
 //! $ git-semver-tags --skip-unstable  
 //! 
-//! /// Run get label under the specified path
+//! ## Run get label under the specified path
 //! $ git-semver-tags --cwd <cwd>
 //! ```
 //! 
