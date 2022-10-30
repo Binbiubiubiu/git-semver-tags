@@ -11,7 +11,7 @@ keywords = [
   "git-tag",
   "git"
 ]
-license = "MIT OR Apache-2.0"
+license = "MIT"
 edition = "2021"
 rust-version = "1.60.0"  # MSRV
 documentation = "https://docs.rs/git-semver-tags"
