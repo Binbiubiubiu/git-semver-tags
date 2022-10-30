@@ -21,9 +21,6 @@ repository = "https://github.com/Binbiubiubiu/git-semver-tags"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
-[[bin]]
-name = "git-semver-tags"
-
 [dependencies]
 clap = { version = "4.0.18", features = ["derive"] }
 lazy_static = "1.4.0"
