@@ -3,7 +3,7 @@ name = "git-semver-tags"
 version = "0.0.1"
 description = "Get all git semver tags of your repository in reverse chronological order"
 authors = ["Binbiubiubiu<2632003786@qq.com>"]
-categories = ["command-line-interface"]
+categories = ["command-line-utilities"]
 keywords = [
   "git-semver-tags",
   "semver",
