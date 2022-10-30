@@ -1,6 +1,6 @@
 [package]
 name = "git-semver-tags"
-version = "0.0.0"
+version = "0.0.1"
 description = "Get all git semver tags of your repository in reverse chronological order"
 authors = ["Binbiubiubiu<2632003786@qq.com>"]
 categories = ["command-line-interface"]
@@ -16,7 +16,6 @@ edition = "2021"
 rust-version = "1.60.0"  # MSRV
 documentation = "https://docs.rs/git-semver-tags"
 readme = "README.md"
-homepage = "https://serde.rs/"
 repository = "https://github.com/Binbiubiubiu/git-semver-tags"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
