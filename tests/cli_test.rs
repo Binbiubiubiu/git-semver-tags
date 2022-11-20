@@ -1,4 +1,4 @@
-use std::{path::Path, env::current_dir};
+use std::{env::current_dir, path::Path};
 
 use assert_fs::prelude::*;
 
@@ -209,9 +209,10 @@ fn test_cli_case2() -> anyhow::Result<()> {
 
     let binding = git_semver_tags!("--package", "bar-project").err().unwrap();
     let output = binding.as_output().unwrap().to_owned();
+    let suffix = if cfg!(windows) { ".exe" } else { "" };
     assert_eq!(
         String::from_utf8(output.stderr)?,
-        "error: The following required arguments were not provided:\n  --lerna\n\nUsage: git-semver-tags --lerna --package <package>\n\nFor more information try \'--help\'\n",
+        format!("error: The following required arguments were not provided:\n  --lerna\n\nUsage: git-semver-tags{suffix} --lerna --package <package>\n\nFor more information try \'--help\'\n"),
         "should not allow package filter without lernaTags=true"
     );
     write_file(&temp, "test6", "")?;
