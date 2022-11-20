@@ -289,7 +289,9 @@ fn test_cli_case3() -> anyhow::Result<()> {
 #[test]
 fn test_cli() -> anyhow::Result<()> {
     test_cli_case1()?;
+    std::thread::sleep(std::time::Duration::from_secs(1));
     test_cli_case2()?;
+    std::thread::sleep(std::time::Duration::from_secs(1));
     test_cli_case3()?;
     Ok(())
 }
