@@ -25,6 +25,8 @@ jobs:
           toolchain: nightly
       - name: Test cases
         run: |
+          git config --global user.name "Binbiubiubiu"
+          git config --global user.email "2632003786@qq.com" 
           cargo test --workspace --all --verbose
 
   clippy:
