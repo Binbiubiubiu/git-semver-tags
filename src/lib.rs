@@ -1,67 +1,7 @@
-#![deny(missing_docs)]
-
-//! # git-semver-tags
-//!
-//! Get all git semver tags of your repository in reverse chronological order
-//! 
-//! ## Install
-//! 
-//! Run
-//! ``` Console
-//! $ cargo install git-semver-tags
-//! ```
-//! 
-//! ## Usage
-//! 
-//! 
-//! By default, it runs check. You can easily override this, though:
-//!
-//! ``` Console
-//! $ git-semver-tags [OPTIONS]
-//! ```
-//! 
-//! A few examples:
-//! 
-//! 
-//! ``` Console
-//! ## Run get all tags
-//! $ git-semver-tags
-//! 
-//! ## Run to get lerna tag
-//! $ git-semver-tags --lerna
-//! 
-//! ## Run the lerna tag to get the specified package name
-//! $ git-semver-tags --lerna --package <package>
-//! 
-//! ## Runs get tag for the specified prefix
-//! $ git-semver-tags --tag-prefix <prefix>
-//! 
-//! ## Run get to ignore unstable tag
-//! $ git-semver-tags --skip-unstable  
-//! 
-//! ## Run get label under the specified path
-//! $ git-semver-tags --cwd <cwd>
-//! ```
-//! 
-//! 
-//! There's a lot more you can do! Here's a copy of the help:
-//! 
-//! ``` Console
-//! Get all git semver tags of your repository in reverse chronological order
-//! 
-//! Usage: git-semver-tags [OPTIONS]
-//! 
-//! Options:
-//!     --lerna                parse lerna style git tags
-//!     --package <package>    when listing lerna style tags, filter by a package
-//!     --tag-prefix <prefix>  prefix to remove from the tags during their processing
-//!     --cwd <cwd>            the current path where the command was run
-//!     --skip-unstable        ignore unstable labels
-//!     -h, --help                 Print help information
-//!     -V, --version              Print version information
-//! 
-//! ```
-//!
+#![forbid(unsafe_code)]
+#![cfg_attr(docsrs, feature(doc_cfg))]
+#![deny(private_in_public, unreachable_pub, missing_docs, rust_2018_idioms)]
+#![doc = include_str!("../README.md")]
 
 use lazy_static::lazy_static;
 use regex::Regex;
@@ -72,19 +12,19 @@ mod cli;
 mod macros;
 pub use cli::Args;
 
-fn is_lerna_tag<'a>(tag: &'a str, pkg: &Option<String>) -> bool {
+fn is_lerna_tag(tag: &str, pkg: &Option<String>) -> bool {
     lazy_static! {
         static ref RE: Regex = format_regex!(r"^.+@[0-9]+\.[0-9]+\.[0-9]+(-.+)?$");
     }
     if let Some(pkg) = pkg {
         return format_regex!(r"^{}@", pkg).is_match(tag);
-    } else {
-        return RE.is_match(tag);
     }
+
+    RE.is_match(tag)
 }
 
 fn semver_valid(version: &str) -> bool {
-    let version = if version.starts_with("v") {
+    let version = if version.starts_with('v') {
         version.get(1..).unwrap()
     } else {
         version
@@ -93,7 +33,7 @@ fn semver_valid(version: &str) -> bool {
 }
 
 /// List the git tags in the project
-/// 
+///
 /// # Examples
 ///
 /// ```no_run
@@ -138,8 +78,8 @@ pub fn captures(args: &Args) -> Vec<String> {
     }
     let output = String::from_utf8(output.stdout).expect("the stdout convert to String fail");
     return output
-        .split("\n")
-        .map(|decorations| {
+        .split('\n')
+        .flat_map(|decorations| {
             TAG_RE
                 .captures_iter(decorations)
                 .filter_map(|cap| {
@@ -150,7 +90,7 @@ pub fn captures(args: &Args) -> Vec<String> {
                     }
 
                     if *lerna {
-                        if is_lerna_tag(tag, &package) {
+                        if is_lerna_tag(tag, package) {
                             return Some(tag.to_string());
                         }
                     } else if let Some(re) = tag_prefix_re.as_ref() {
@@ -165,7 +105,6 @@ pub fn captures(args: &Args) -> Vec<String> {
                 })
                 .collect::<Vec<_>>()
         })
-        .flatten()
         .collect();
 }
 

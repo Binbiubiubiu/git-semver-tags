@@ -26,7 +26,6 @@ pub struct Args {
 }
 
 impl Args {
-
     /// specify the lerna tag
     pub fn lerna(&mut self) -> &mut Args {
         self.lerna = true;
