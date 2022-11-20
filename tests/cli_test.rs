@@ -1,4 +1,4 @@
-use std::path::Path;
+use std::{path::Path, env::current_dir};
 
 use assert_fs::prelude::*;
 
@@ -45,6 +45,7 @@ where
 
 fn test_cli_case1() -> anyhow::Result<()> {
     let temp = assert_fs::TempDir::new()?;
+    let pre_path = current_dir()?;
     std::env::set_current_dir(temp.path())?;
     exec!("git", "init")?;
 
@@ -119,12 +120,14 @@ fn test_cli_case1() -> anyhow::Result<()> {
         "should still work if I run it again"
     );
 
+    std::env::set_current_dir(pre_path)?;
     temp.close()?;
     Ok(())
 }
 
 fn test_cli_case2() -> anyhow::Result<()> {
     let temp = assert_fs::TempDir::new()?;
+    let pre_path = current_dir()?;
     std::env::set_current_dir(temp.path())?;
     exec!("git", "init")?;
 
@@ -255,12 +258,14 @@ fn test_cli_case2() -> anyhow::Result<()> {
         "should skip unstable tags"
     );
 
+    std::env::set_current_dir(pre_path)?;
     temp.close()?;
     Ok(())
 }
 
 fn test_cli_case3() -> anyhow::Result<()> {
     let temp = assert_fs::TempDir::new()?;
+    let pre_path = current_dir()?;
     std::env::set_current_dir(temp.path())?;
 
     let binding = temp.join("footer");
@@ -282,6 +287,7 @@ fn test_cli_case3() -> anyhow::Result<()> {
         "git semver tags on different cwd"
     );
 
+    std::env::set_current_dir(pre_path)?;
     temp.close()?;
     Ok(())
 }
@@ -289,9 +295,7 @@ fn test_cli_case3() -> anyhow::Result<()> {
 #[test]
 fn test_cli() -> anyhow::Result<()> {
     test_cli_case1()?;
-    std::thread::sleep(std::time::Duration::from_secs(1));
     test_cli_case2()?;
-    std::thread::sleep(std::time::Duration::from_secs(1));
     test_cli_case3()?;
     Ok(())
 }
