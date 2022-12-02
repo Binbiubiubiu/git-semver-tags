@@ -217,7 +217,7 @@ fn test_cli_case2() -> anyhow::Result<()> {
     );
     write_file(&temp, "test6", "")?;
     exec!("git", "add", "--all")?;
-    exec!("git", "commit", "-m", "\"eigth commit\"")?;
+    exec!("git", "commit", "-m", "\"eighth commit\"")?;
     exec!("git", "tag", "ms/6.0.0")?;
     write_file(&temp, "test6", "1")?;
     exec!("git", "add", "--all")?;

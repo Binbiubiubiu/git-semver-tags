@@ -6,6 +6,8 @@ on:
     branches:
       - main
 
+env:
+  CARGO_TERM_COLOR: always
 
 jobs:
   test:
@@ -20,24 +22,36 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v3
-      - uses: dtolnay/rust-toolchain@v1  
+      - uses: dtolnay/rust-toolchain@v1
         with:
           toolchain: nightly
+      - uses: taiki-e/install-action@cargo-llvm-cov
+      - uses: taiki-e/install-action@nextest
+      - uses: Swatinem/rust-cache@v2
       - name: Test cases
         run: |
           git config --global user.name "Binbiubiubiu"
-          git config --global user.email "2632003786@qq.com" 
-          cargo test --workspace --all --verbose
+          git config --global user.email "2632003786@qq.com"
+          cargo nextest run --workspace --all --verbose
+      - name: Generate code coverage
+        run: cargo llvm-cov --all-features --workspace --lcov --output-path lcov.info
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
+          files: lcov.info
+          fail_ci_if_error: true
 
   clippy:
     name: cargo clippy
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: dtolnay/rust-toolchain@v1  
+      - uses: dtolnay/rust-toolchain@v1
         with:
           toolchain: nightly
-          components: clippy     
+          components: clippy
+      - uses: Swatinem/rust-cache@v2
       - name: Check Clippy
         run: |
           cargo clippy --workspace --all-targets
@@ -51,6 +65,7 @@ jobs:
         with:
           toolchain: stable
           components: rustfmt
+      - uses: Swatinem/rust-cache@v2
       - name: Check formatting
         run: |
           cargo fmt --all -- --check
@@ -63,6 +78,7 @@ jobs:
       - uses: dtolnay/rust-toolchain@v1
         with:
           toolchain: nightly
+      - uses: Swatinem/rust-cache@v2
       - name: Check documenting
         run: |
           RUSTDOCFLAGS="-D warnings --cfg docsrs" cargo doc --workspace --all-features --no-deps
