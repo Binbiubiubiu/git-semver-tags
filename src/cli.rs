@@ -25,38 +25,6 @@ pub struct Args {
     pub(crate) skip_unstable: bool,
 }
 
-impl Args {
-    /// specify the lerna tag
-    pub fn lerna(&mut self) -> &mut Args {
-        self.lerna = true;
-        self
-    }
-
-    /// set tag prefix filters
-    pub fn tag_prefix<P: AsRef<str>>(&mut self, dir: P) -> &mut Args {
-        self.tag_prefix = Some(dir.as_ref().to_string());
-        self
-    }
-
-    /// set the package name filter
-    pub fn package_name<P: AsRef<str>>(&mut self, dir: P) -> &mut Args {
-        self.package = Some(dir.as_ref().to_string());
-        self
-    }
-
-    /// set the current path where the command is run
-    pub fn current_dir<P: AsRef<str>>(&mut self, dir: P) -> &mut Args {
-        self.cwd = Some(dir.as_ref().to_string());
-        self
-    }
-
-    /// ignore unstable labels
-    pub fn skip_unstable(&mut self) -> &mut Args {
-        self.skip_unstable = true;
-        self
-    }
-}
-
 #[cfg(test)]
 mod tests {
     use super::*;
