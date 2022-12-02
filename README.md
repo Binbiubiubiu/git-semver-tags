@@ -1,6 +1,6 @@
  # git-semver-tags
 
- ![Crates.io](https://img.shields.io/crates/v/git-semver-tags) ![Crates.io](https://img.shields.io/crates/d/git-semver-tags) ![Crates.io](https://img.shields.io/crates/l/git-semver-tags) [![CI](https://github.com/Binbiubiubiu/git-semver-tags/actions/workflows/CI.yml/badge.svg)](https://github.com/Binbiubiubiu/git-semver-tags/actions/workflows/CI.yml)
+ ![Crates.io](https://img.shields.io/crates/v/git-semver-tags) ![Crates.io](https://img.shields.io/crates/d/git-semver-tags) ![Crates.io](https://img.shields.io/crates/l/git-semver-tags) [![CI](https://github.com/Binbiubiubiu/git-semver-tags/actions/workflows/CI.yml/badge.svg)](https://github.com/Binbiubiubiu/git-semver-tags/actions/workflows/CI.yml) [![codecov](https://codecov.io/gh/Binbiubiubiu/git-semver-tags/branch/main/graph/badge.svg?token=YTIKDKKKBV)](https://codecov.io/gh/Binbiubiubiu/git-semver-tags)
 
 
  Get all git semver tags of your repository in reverse chronological order
