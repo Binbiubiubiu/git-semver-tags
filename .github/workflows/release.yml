@@ -68,8 +68,7 @@ jobs:
       - uses: taiki-e/upload-rust-binary-action@v1
         with:
           bin: git-semver-tags
-          # The tag name contains the binary name so just use that.
-          archive: $tag-$target
+          archive: $bin-$tag-$target
           target: ${{ matrix.target }}
           tar: all
           zip: windows
