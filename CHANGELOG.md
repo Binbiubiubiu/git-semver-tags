@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+
+## v0.0.6 (2022-12-03)
+
+### Bugs fixed:
+
+- fix support cargo-binstall([`9291bdb`](https://github.com/Binbiubiubiu/git-semver-tags/commit/9291bdbb2c0708caea7574ab222ebc999745cb78)) (by Binbiubiubiu)
+
 ## v0.0.5 (2022-12-03)
 
 ### Bugs fixed:
