@@ -60,8 +60,6 @@ jobs:
             os: windows-latest
           - target: x86_64-apple-darwin
             os: macos-latest
-          - target: x86_64-apple-darwin
-            os: macos-latest
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v3
