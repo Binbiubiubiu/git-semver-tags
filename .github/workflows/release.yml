@@ -65,16 +65,11 @@ jobs:
         with:
           persist-credentials: false
       - uses: dtolnay/rust-toolchain@stable
-      - name: Get tag
-        id: tag
-        uses: dawidd6/action-get-tag@v1.1.0
-        with:
-          # Optionally strip `v` prefix
-          strip_v: true
       - uses: taiki-e/upload-rust-binary-action@v1
         with:
           bin: git-semver-tags
-          archive: $bin-${{steps.tag.outputs.tag}}-$target
+          # The tag name contains the binary name so just use that.
+          archive: $tag-$target
           target: ${{ matrix.target }}
           tar: all
           zip: windows
