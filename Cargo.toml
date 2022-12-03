@@ -1,6 +1,6 @@
 [package]
 name = "git-semver-tags"
-version = "0.0.6"
+version = "0.0.7"
 description = "Get all git semver tags of your repository in reverse chronological order"
 authors = ["Binbiubiubiu<2632003786@qq.com>"]
 categories = ["command-line-utilities"]
