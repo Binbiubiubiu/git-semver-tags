@@ -17,7 +17,7 @@
 You can install cargo-llvm-cov using [cargo-binstall](https://github.com/ryankurte/cargo-binstall):
 
 ``` Console
-cargo binstall git-semver-tags
+$ cargo binstall git-semver-tags
 ```
 
  ## Usage
