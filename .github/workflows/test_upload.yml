@@ -37,26 +37,36 @@ jobs:
           # Native builds
           - target: x86_64-unknown-linux-gnu
             os: ubuntu-latest
+            build_tool: cargo
           - target: x86_64-pc-windows-msvc
             os: windows-latest
+            build_tool: cargo
           - target: i686-pc-windows-msvc
             os: windows-latest
+            build_tool: cargo
+          # - target: aarch64-apple-darwin
+          #   os: macos-latest
+          #   build_tool: cargo
+          # - target: x86_64-apple-darwin
+          #   os: macos-latest
+          #   build_tool: cargo
           - target: universal-apple-darwin
             os: macos-latest
-          - target: aarch64-apple-darwin
-            os: macos-latest
-          - target: x86_64-apple-darwin
-            os: macos-latest
+            build_tool: cargo
 
           # Builds using cross
-          - target: x86_64-unknown-linux-musl
-            os: ubuntu-latest
           - target: aarch64-unknown-linux-gnu
             os: ubuntu-latest
+            build_tool: cross
+          - target: x86_64-unknown-linux-musl
+            os: ubuntu-latest
+            build_tool: cross
           - target: x86_64-unknown-freebsd
             os: ubuntu-latest
+            build_tool: cross
           - target: x86_64-unknown-illumos
             os: ubuntu-latest
+            build_tool: cross
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v3
@@ -66,7 +76,7 @@ jobs:
         uses: taiki-e/setup-cross-toolchain-action@v1
         with:
           target: ${{ matrix.target }}
-        if: startsWith(matrix.os, 'ubuntu')
+        if: startsWith(matrix.os, 'ubuntu') && !contains(fromJSON('["x86_64-unknown-illumos", "x86_64-unknown-linux-musl"]'), matrix.target)
       - name: Get tag
         if: github.event.inputs.tags == ''
         id: tag
@@ -80,6 +90,7 @@ jobs:
           bin: git-semver-tags
           archive: $bin-${{github.event.inputs.tags || steps.tag.outputs.tag}}-$target
           target: ${{ matrix.target }}
+          build_tool: ${{ matrix.build_tool }}
           tar: all
           zip: windows
           token: ${{ secrets.GITHUB_TOKEN }}
