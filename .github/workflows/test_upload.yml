@@ -34,7 +34,6 @@ jobs:
       matrix:
         # When updating this list, the reminder to update the target list in ci.yml.
         include:
-          # Native builds
           - target: x86_64-unknown-linux-gnu
             os: ubuntu-latest
           - target: x86_64-pc-windows-msvc
@@ -48,7 +47,6 @@ jobs:
           # - target: universal-apple-darwin
           #   os: macos-latest
 
-          # Builds using cross
           - target: aarch64-unknown-linux-gnu
             os: ubuntu-latest
           - target: x86_64-unknown-linux-musl

@@ -49,59 +49,37 @@ jobs:
       matrix:
         # When updating this list, the reminder to update the target list in ci.yml.
         include:
-          # Native builds
           - target: x86_64-unknown-linux-gnu
-            os: ubuntu-22.04
-            container: ubuntu:18.04
+            os: ubuntu-latest
           - target: x86_64-pc-windows-msvc
             os: windows-latest
-            container:
           - target: i686-pc-windows-msvc
             os: windows-latest
-            container:
-          - target: universal-apple-darwin
+          - target: aarch64-apple-darwin
             os: macos-latest
-            container:
+          - target: x86_64-apple-darwin
+            os: macos-latest
+          # - target: universal-apple-darwin
+          #   os: macos-latest
 
-          # Builds using cross
-          - target: x86_64-unknown-linux-musl
-            os: ubuntu-22.04
-            # musl is statically linked and uses cross
-            container:
           - target: aarch64-unknown-linux-gnu
-            os: ubuntu-22.04
-            # uses cross
-            container:
+            os: ubuntu-latest
+          - target: x86_64-unknown-linux-musl
+            os: ubuntu-latest
           - target: x86_64-unknown-freebsd
-            os: ubuntu-22.04
-            # uses cross
-            container:
+            os: ubuntu-latest
           - target: x86_64-unknown-illumos
-            os: ubuntu-22.04
-            # uses cross
-            container:
+            os: ubuntu-latest
     runs-on: ${{ matrix.os }}
-    container: ${{ matrix.container }}
     steps:
-      - if: matrix.container == 'ubuntu:18.04'
-        run: |
-          set -eu
-          apt-get -qq update
-          apt-get install -y software-properties-common sudo build-essential curl jq
-          add-apt-repository ppa:git-core/ppa
-          apt-get -qq update
-          apt-get -qq -y install git-core
-          git config --global --add safe.directory "${GITHUB_WORKSPACE}"
-          # gh is required by taiki-e/upload-rust-binary-action
-          curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg \
-          && sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg \
-          && echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
-          && sudo apt-get -qq update \
-          && sudo apt-get -qq -y install gh
       - uses: actions/checkout@v3
         with:
           persist-credentials: false
-      - uses: dtolnay/rust-toolchain@stable
+      - name: Install cross-compilation tools
+        uses: taiki-e/setup-cross-toolchain-action@v1
+        with:
+          target: ${{ matrix.target }}
+        if: startsWith(matrix.os, 'ubuntu') && !contains(fromJSON('["x86_64-unknown-illumos", "x86_64-unknown-linux-musl"]'), matrix.target)
       - name: Get tag
         id: tag
         uses: dawidd6/action-get-tag@v1.1.0
@@ -111,6 +89,7 @@ jobs:
       - uses: taiki-e/upload-rust-binary-action@v1
         with:
           bin: git-semver-tags
+          include: LICENSE,README.md
           archive: $bin-${{steps.tag.outputs.tag}}-$target
           target: ${{ matrix.target }}
           tar: all
