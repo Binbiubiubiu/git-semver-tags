@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-[reload]
+## 0.0.8 (2023-02-11)
 
 ### New feature:
 
