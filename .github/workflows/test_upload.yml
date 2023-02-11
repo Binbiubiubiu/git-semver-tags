@@ -70,8 +70,7 @@ jobs:
       - if: matrix.container == 'ubuntu:18.04'
         run: |
           set -eu
-          apt-get -qq update \
-          && sudo apt-get install -y libssl-dev \
+          sudo apt-get install -y libssl-dev \
           && sudo apt-get install -y libudev-dev \
           && sudo apt-get install -y pkg-config
       - uses: actions/checkout@v3
