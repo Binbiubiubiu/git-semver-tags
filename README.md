@@ -50,6 +50,9 @@ $ cargo binstall git-semver-tags
 
  # Run get label under the specified path
  $ git-semver-tags --cwd <cwd>
+
+ # Run upgrade self version
+ $ git-semver-tags upgrade
  ```
 
 
@@ -58,15 +61,19 @@ $ cargo binstall git-semver-tags
  ``` Console
  Get all git semver tags of your repository in reverse chronological order
 
- Usage: git-semver-tags [OPTIONS]
+ Usage: git-semver-tags [OPTIONS] [COMMAND]
 
- Options:
-     --lerna                parse lerna style git tags
-     --package <package>    when listing lerna style tags, filter by a package
-     --tag-prefix <prefix>  prefix to remove from the tags during their processing
-     --cwd <cwd>            the current path where the command was run
-     --skip-unstable        ignore unstable labels
-     -h, --help                 Print help information
-     -V, --version              Print version information
+Commands:
+  upgrade  upgrade version
+  help     Print this message or the help of the given subcommand(s)
+
+Options:
+      --lerna                parse lerna style git tags
+      --package <package>    when listing lerna style tags, filter by a package
+      --tag-prefix <prefix>  prefix to remove from the tags during their processing
+      --cwd <cwd>            the current path where the command was run
+      --skip-unstable        ignore unstable labels
+  -h, --help                 Print help
+  -V, --version              Print version
 
  ```

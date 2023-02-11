@@ -212,7 +212,7 @@ fn test_cli_case2() -> anyhow::Result<()> {
     let suffix = if cfg!(windows) { ".exe" } else { "" };
     assert_eq!(
         String::from_utf8(output.stderr)?,
-        format!("error: The following required arguments were not provided:\n  --lerna\n\nUsage: git-semver-tags{suffix} --lerna --package <package>\n\nFor more information try \'--help\'\n"),
+        format!("error: the following required arguments were not provided:\n  --lerna\n\nUsage: git-semver-tags{suffix} --lerna --package <package>\n\nFor more information, try \'--help\'.\n"),
         "should not allow package filter without lernaTags=true"
     );
     write_file(&temp, "test6", "")?;

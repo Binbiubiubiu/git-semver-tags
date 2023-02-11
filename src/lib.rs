@@ -5,12 +5,14 @@
 
 use lazy_static::lazy_static;
 use regex::Regex;
+use self_update::cargo_crate_version;
 use std::{io::Write, process::Command};
 
 mod cli;
 #[macro_use]
 mod macros;
-pub use cli::Args;
+pub use cli::{Args,Commands};
+
 
 fn is_lerna_tag(tag: &str, pkg: &Option<String>) -> bool {
     lazy_static! {
@@ -30,6 +32,23 @@ fn semver_valid(version: &str) -> bool {
         version
     };
     semver::Version::parse(version).is_ok()
+}
+
+/// upgrade self version
+pub fn self_upgrade(is_test:bool) -> Result<(), Box<dyn std::error::Error>> {
+    let binding = clap::crate_authors!().split("<").collect::<Vec<_>>();
+    let authors = *binding.get(0).expect("get author name");
+    let status = self_update::backends::github::Update::configure()
+        .repo_owner(authors)
+        .repo_name(clap::crate_name!())
+        .bin_name(clap::crate_name!())
+        .show_download_progress(true)
+        .current_version(cargo_crate_version!())
+        .no_confirm(is_test)
+        .build()?
+        .update()?;
+    println!("Update status: `{}`!", status.version());
+    Ok(())
 }
 
 /// List the git tags in the project
@@ -60,6 +79,7 @@ pub fn captures(args: &Args) -> Vec<String> {
         package,
         cwd,
         skip_unstable,
+        ..
     } = args;
 
     let tag_prefix_re = tag_prefix
@@ -124,5 +144,10 @@ mod tests {
         assert!(!is_lerna_tag("1.0.0", &None));
         assert!(is_lerna_tag("pkg@1.0.0", &Some("pkg".to_string())));
         assert!(!is_lerna_tag("pkg1@1.0.0", &Some("pkg".to_string())));
+    }
+
+    #[test]
+    fn test_self_upgrade() {
+        assert!(self_upgrade(true).is_ok());
     }
 }

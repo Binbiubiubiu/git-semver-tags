@@ -1,4 +1,4 @@
-use clap::Parser;
+use clap::{Parser,Subcommand};
 
 /// The command line specifies the parameters
 #[derive(Parser, Debug, Default)]
@@ -23,6 +23,17 @@ pub struct Args {
     /// ignore unstable labels
     #[arg(long)]
     pub(crate) skip_unstable: bool,
+
+    /// subcommand
+    #[command(subcommand)]
+    pub command: Option<Commands>,
+}
+
+/// subcommand
+#[derive(Subcommand,Debug)]
+pub enum Commands{
+    /// upgrade version
+    Upgrade
 }
 
 #[cfg(test)]
