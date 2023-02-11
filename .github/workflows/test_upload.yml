@@ -30,6 +30,7 @@ jobs:
   upload-assets:
     name: ${{ matrix.target }}
     strategy:
+      fail-fast: false
       matrix:
         # When updating this list, the reminder to update the target list in ci.yml.
         include:
@@ -64,6 +65,7 @@ jobs:
         with:
           persist-credentials: false
       - uses: dtolnay/rust-toolchain@stable
+        target: ${{ matrix.target }}
       - name: Get tag
         if: github.event.inputs.tags == ''
         id: tag
