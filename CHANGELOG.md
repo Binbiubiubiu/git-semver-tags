@@ -2,7 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
-## 0.0.8 (2023-02-11)
+## 0.0.9 (2023-02-11)
+
+### Bugs fixed:
+
+- fix ci ([`50c0fb2`](https://github.com/Binbiubiubiu/git-semver-tags/commit/50c0fb21e7424d38282024406d35222ba09ba720) by Binbiubiubiu)
+
+
+## v0.0.8 (2023-02-11)
 
 ### New feature:
 
