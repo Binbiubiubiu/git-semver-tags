@@ -26,7 +26,6 @@ jobs:
         with:
           toolchain: nightly
           components: llvm-tools
-          env
       - uses: taiki-e/install-action@cargo-llvm-cov
       - uses: taiki-e/install-action@nextest
       - uses: Swatinem/rust-cache@v2
