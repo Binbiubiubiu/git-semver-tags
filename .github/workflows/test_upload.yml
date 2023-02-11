@@ -65,7 +65,8 @@ jobs:
         with:
           persist-credentials: false
       - uses: dtolnay/rust-toolchain@stable
-        target: ${{ matrix.target }}
+        with:
+          target: ${{ matrix.target }}
       - name: Get tag
         if: github.event.inputs.tags == ''
         id: tag
