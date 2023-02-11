@@ -87,7 +87,7 @@ jobs:
           persist-credentials: false
       - uses: dtolnay/rust-toolchain@stable
       - name: Get tag
-        if: github.event.inputs.tags !== ''
+        if: github.event.inputs.tags != ''
         id: tag
         uses: dawidd6/action-get-tag@v1.1.0
         with:
