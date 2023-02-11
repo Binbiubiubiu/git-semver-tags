@@ -44,15 +44,15 @@ jobs:
           - target: i686-pc-windows-msvc
             os: windows-latest
             build_tool: cargo
-          # - target: aarch64-apple-darwin
-          #   os: macos-latest
-          #   build_tool: cargo
-          # - target: x86_64-apple-darwin
-          #   os: macos-latest
-          #   build_tool: cargo
-          - target: universal-apple-darwin
+          - target: aarch64-apple-darwin
             os: macos-latest
             build_tool: cargo
+          - target: x86_64-apple-darwin
+            os: macos-latest
+            build_tool: cargo
+          # - target: universal-apple-darwin
+          #   os: macos-latest
+          #   build_tool: cargo
 
           # Builds using cross
           - target: aarch64-unknown-linux-gnu
