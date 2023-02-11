@@ -54,13 +54,6 @@ jobs:
           #   os: ubuntu-latest
     runs-on: ${{ matrix.os }}
     steps:
-      - if: matrix.os == 'ubuntu-latest'
-        run: |
-          sudo apt-get -qq update \
-          && sudo apt-get -qq -y install gh \
-          && sudo apt-get install -y libssl-dev \
-          && sudo apt-get install -y libudev-dev \
-          && sudo apt-get install  pkg-config
       - uses: actions/checkout@v3
         with:
           persist-credentials: false
