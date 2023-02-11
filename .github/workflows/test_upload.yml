@@ -95,6 +95,7 @@ jobs:
           strip_v: true
       - uses: taiki-e/upload-rust-binary-action@v1
         with:
+          ref: refs/tags/my_tag
           bin: git-semver-tags
           archive: $bin-${{github.event.inputs.tags || steps.tag.outputs.tag}}-$target
           target: ${{ matrix.target }}
