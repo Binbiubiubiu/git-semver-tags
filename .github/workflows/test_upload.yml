@@ -61,10 +61,12 @@ jobs:
           - target: aarch64-unknown-linux-gnu
             os: ubuntu-latest
             build_tool: cross
-          # - target: x86_64-unknown-freebsd
-          #   os: ubuntu-latest
-          # - target: x86_64-unknown-illumos
-          #   os: ubuntu-latest
+          - target: x86_64-unknown-freebsd
+            os: ubuntu-latest
+            build_tool: cross
+          - target: x86_64-unknown-illumos
+            os: ubuntu-latest
+            build_tool: cross
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v3
