@@ -1,4 +1,4 @@
-use clap::{Parser,Subcommand};
+use clap::{Parser, Subcommand};
 
 /// The command line specifies the parameters
 #[derive(Parser, Debug, Default)]
@@ -30,10 +30,10 @@ pub struct Args {
 }
 
 /// subcommand
-#[derive(Subcommand,Debug)]
-pub enum Commands{
+#[derive(Subcommand, Debug)]
+pub enum Commands {
     /// upgrade version
-    Upgrade
+    Upgrade,
 }
 
 #[cfg(test)]

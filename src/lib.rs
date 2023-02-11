@@ -11,8 +11,7 @@ use std::{io::Write, process::Command};
 mod cli;
 #[macro_use]
 mod macros;
-pub use cli::{Args,Commands};
-
+pub use cli::{Args, Commands};
 
 fn is_lerna_tag(tag: &str, pkg: &Option<String>) -> bool {
     lazy_static! {
@@ -35,7 +34,7 @@ fn semver_valid(version: &str) -> bool {
 }
 
 /// upgrade self version
-pub fn self_upgrade(is_test:bool) -> Result<(), Box<dyn std::error::Error>> {
+pub fn self_upgrade(is_test: bool) -> Result<(), Box<dyn std::error::Error>> {
     let binding = clap::crate_authors!().split("<").collect::<Vec<_>>();
     let authors = *binding.get(0).expect("get author name");
     let status = self_update::backends::github::Update::configure()
