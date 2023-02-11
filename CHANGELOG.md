@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## v0.0.8 (2023-02-11)
+
+### New feature:
+
+- add command `upgrade` to upgrade self version([`68fb753`](https://github.com/Binbiubiubiu/git-semver-tags/commit/68fb7536383dd69a2c242801f854266c5ba757d4)) (by Binbiubiubiu)
+
 ## v0.0.7 (2022-12-03)
 
 ### Bugs fixed:
