@@ -47,6 +47,12 @@ jobs:
           - target: universal-apple-darwin
             os: macos-latest
             build_tool: cargo
+          - target: aarch64-apple-darwin
+            os: macos-latest
+            build_tool: cargo
+          - target: x86_64-apple-darwin
+            os: macos-latest
+            build_tool: cargo
 
           # Builds using cross
           - target: x86_64-unknown-linux-musl
@@ -65,8 +71,6 @@ jobs:
         with:
           persist-credentials: false
       - uses: dtolnay/rust-toolchain@stable
-        with:
-          target: ${{ matrix.target }}
       - name: Get tag
         if: github.event.inputs.tags == ''
         id: tag
