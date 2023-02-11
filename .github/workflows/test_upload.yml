@@ -9,9 +9,10 @@ on:
     tags:
       - v[0-9]+.*
   workflow_dispatch:
-    tags:
-        description: 'Release tags'
-        default: ''
+    inputs:
+      tags:
+          description: 'Release tags'
+          default: ''
 
 env:
   CARGO_INCREMENTAL: 0
@@ -55,14 +56,14 @@ jobs:
             os: ubuntu-22.04
             # uses cross
             container:
-          - target: x86_64-unknown-freebsd
-            os: ubuntu-22.04
-            # uses cross
-            container:
-          - target: x86_64-unknown-illumos
-            os: ubuntu-22.04
-            # uses cross
-            container:
+          # - target: x86_64-unknown-freebsd
+          #   os: ubuntu-22.04
+          #   # uses cross
+          #   container:
+          # - target: x86_64-unknown-illumos
+          #   os: ubuntu-22.04
+          #   # uses cross
+          #   container:
     runs-on: ${{ matrix.os }}
     container: ${{ matrix.container }}
     steps:
