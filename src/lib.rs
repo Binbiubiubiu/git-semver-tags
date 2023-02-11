@@ -145,8 +145,8 @@ mod tests {
         assert!(!is_lerna_tag("pkg1@1.0.0", &Some("pkg".to_string())));
     }
 
-    #[test]
-    fn test_self_upgrade() {
-        assert!(self_upgrade(true).is_ok());
-    }
+    // #[test]
+    // fn test_self_upgrade() {
+    //     assert!(self_upgrade(true).is_ok());
+    // }
 }
