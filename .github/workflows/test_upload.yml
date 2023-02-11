@@ -36,18 +36,24 @@ jobs:
           # Native builds
           - target: x86_64-unknown-linux-gnu
             os: ubuntu-latest
+            build_tool: cargo
           - target: x86_64-pc-windows-msvc
             os: windows-latest
+            build_tool: cargo
           - target: i686-pc-windows-msvc
             os: windows-latest
+            build_tool: cargo
           - target: universal-apple-darwin
             os: macos-latest
+            build_tool: cargo
 
           # Builds using cross
           - target: x86_64-unknown-linux-musl
             os: ubuntu-latest
+            build_tool: cross
           - target: aarch64-unknown-linux-gnu
             os: ubuntu-latest
+            build_tool: cross
           # - target: x86_64-unknown-freebsd
           #   os: ubuntu-latest
           # - target: x86_64-unknown-illumos
@@ -71,6 +77,7 @@ jobs:
           bin: git-semver-tags
           archive: $bin-${{github.event.inputs.tags || steps.tag.outputs.tag}}-$target
           target: ${{ matrix.target }}
+          build_tool: ${{ matrix.build_tool }}
           tar: all
           zip: windows
           token: ${{ secrets.GITHUB_TOKEN }}
