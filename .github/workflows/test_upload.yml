@@ -9,6 +9,9 @@ on:
     tags:
       - v[0-9]+.*
   workflow_dispatch:
+    tags:
+        description: 'Release tags'
+        default: ''
 
 env:
   CARGO_INCREMENTAL: 0
@@ -83,6 +86,7 @@ jobs:
           persist-credentials: false
       - uses: dtolnay/rust-toolchain@stable
       - name: Get tag
+        if: github.event.inputs.tags !== ''
         id: tag
         uses: dawidd6/action-get-tag@v1.1.0
         with:
@@ -91,7 +95,7 @@ jobs:
       - uses: taiki-e/upload-rust-binary-action@v1
         with:
           bin: git-semver-tags
-          archive: $bin-${{steps.tag.outputs.tag}}-$target
+          archive: $bin-${{github.event.inputs.tags || steps.tag.outputs.tag}}-$target
           target: ${{ matrix.target }}
           tar: all
           zip: windows
