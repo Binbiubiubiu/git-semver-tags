@@ -82,8 +82,8 @@ jobs:
           && echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
           && sudo apt-get -qq update \
           && sudo apt-get -qq -y install gh \
-          && sudo apt install libssl-dev \
-          && sudo apt install pkg-config
+          && sudo apt-get install libssl-dev \
+          && sudo apt-get install pkg-config
       - uses: actions/checkout@v3
         with:
           persist-credentials: false
