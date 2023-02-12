@@ -15,9 +15,9 @@ body = """
     ## [unreleased]
 {% endif %}\
 {% for group, commits in commits | group_by(attribute="group") %}
-    ### {{ group | upper_first }}:
+    ### &nbsp;&nbsp;&nbsp;{{ group }}:
     {% for commit in commits %}
-        - {{ commit.message }} ([`{{ commit.id | truncate(length=7, end="") }}`](https://github.com/Binbiubiubiu/git-semver-tags/commit/{{ commit.id }}) by {{ commit.committer.name }})
+        - {{ commit.message | upper_first }} &nbsp;-&nbsp; by @{{ commit.committer.name }} [<samp>({{ commit.id | truncate(length=7, end="") }})</samp>](https://github.com/Binbiubiubiu/git-semver-tags/commit/{{ commit.id }})
     {% endfor %}
 {% endfor %}\n
 """
@@ -37,14 +37,14 @@ filter_unconventional = true
 split_commits = false
 # regex for preprocessing the commit messages
 # commit_preprocessors = [
-#     { pattern = '\((\w+\s)?#([0-9]+)\)', replace = "([#${2}](https://github.com/orhun/git-cliff/issues/${2}))"},
+#     { pattern = '\((\w+\s)?#([0-9]+)\)', replace = "([#${2}](https://github.com/Binbiubiubiu/git-semver-tags/issues/${2}))"},
 # ]
 # regex for parsing and grouping commits
 commit_parsers = [
-    { message = "^feat", group = "New feature"},
-    { message = "^fix", group = "Bugs fixed"},
+    { message = "^feat", group = "🚀 Features"},
+    { message = "^fix", group = "🐞 Bug Fixes"},
     # { message = "^doc", group = "Documentation"},
-    # { message = "^perf", group = "Performance"},
+    { message = "^perf", group = "🏎 Performance"},
     # { message = "^refactor", group = "Refactor"},
     # { message = "^style", group = "Styling"},
     # { message = "^test", group = "Testing"},

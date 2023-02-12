@@ -2,73 +2,73 @@
 
 All notable changes to this project will be documented in this file.
 
-## 0.0.9 (2023-02-11)
+## v0.0.9 (2023-02-11)
 
-### Bugs fixed:
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes:
 
-- fix ci ([`50c0fb2`](https://github.com/Binbiubiubiu/git-semver-tags/commit/50c0fb21e7424d38282024406d35222ba09ba720) by Binbiubiubiu)
+- Fix ci &nbsp;-&nbsp; by @Binbiubiubiu [<samp>(50c0fb2)</samp>](https://github.com/Binbiubiubiu/git-semver-tags/commit/50c0fb21e7424d38282024406d35222ba09ba720)
 
 
 ## v0.0.8 (2023-02-11)
 
-### New feature:
+### &nbsp;&nbsp;&nbsp;🚀 Features:
 
-- add command `upgrade` to upgrade self version ([`68fb753`](https://github.com/Binbiubiubiu/git-semver-tags/commit/68fb7536383dd69a2c242801f854266c5ba757d4) by Binbiubiubiu)
+- Add command `upgrade` to upgrade self version &nbsp;-&nbsp; by @Binbiubiubiu [<samp>(68fb753)</samp>](https://github.com/Binbiubiubiu/git-semver-tags/commit/68fb7536383dd69a2c242801f854266c5ba757d4)
 
 
 ## v0.0.7 (2022-12-03)
 
-### Bugs fixed:
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes:
 
-- fix support cargo-binstall ([`7069a3e`](https://github.com/Binbiubiubiu/git-semver-tags/commit/7069a3e81bf1f1c6049514a0e0ff14af5c38ebdb) by Binbiubiubiu)
+- Fix support cargo-binstall &nbsp;-&nbsp; by @Binbiubiubiu [<samp>(7069a3e)</samp>](https://github.com/Binbiubiubiu/git-semver-tags/commit/7069a3e81bf1f1c6049514a0e0ff14af5c38ebdb)
 
 
 ## v0.0.6 (2022-12-03)
 
-### Bugs fixed:
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes:
 
-- fix support cargo-binstall ([`9291bdb`](https://github.com/Binbiubiubiu/git-semver-tags/commit/9291bdbb2c0708caea7574ab222ebc999745cb78) by Binbiubiubiu)
+- Fix support cargo-binstall &nbsp;-&nbsp; by @Binbiubiubiu [<samp>(9291bdb)</samp>](https://github.com/Binbiubiubiu/git-semver-tags/commit/9291bdbb2c0708caea7574ab222ebc999745cb78)
 
 
 ## v0.0.5 (2022-12-03)
 
-### Bugs fixed:
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes:
 
-- fix support cargo-binstall ([`c38f31d`](https://github.com/Binbiubiubiu/git-semver-tags/commit/c38f31d90ba31469e2d1f87cc8893c3efa18e268) by Binbiubiubiu)
+- Fix support cargo-binstall &nbsp;-&nbsp; by @Binbiubiubiu [<samp>(c38f31d)</samp>](https://github.com/Binbiubiubiu/git-semver-tags/commit/c38f31d90ba31469e2d1f87cc8893c3efa18e268)
 
 
 ## v0.0.4 (2022-12-03)
 
-### New feature:
+### &nbsp;&nbsp;&nbsp;🚀 Features:
 
-- support cargo-binstall ([`6aba9db`](https://github.com/Binbiubiubiu/git-semver-tags/commit/6aba9dbbc3bf83f3cb90764b386176a528434816) by Binbiubiubiu)
+- Support cargo-binstall &nbsp;-&nbsp; by @Binbiubiubiu [<samp>(6aba9db)</samp>](https://github.com/Binbiubiubiu/git-semver-tags/commit/6aba9dbbc3bf83f3cb90764b386176a528434816)
 
 
 ## v0.0.3 (2022-12-02)
 
-### Bugs fixed:
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes:
 
-- fix test ([`47ecac5`](https://github.com/Binbiubiubiu/git-semver-tags/commit/47ecac574b86ee88d07709ca7cc399a2ad21cb96) by Binbiubiubiu)
+- Fix test &nbsp;-&nbsp; by @Binbiubiubiu [<samp>(47ecac5)</samp>](https://github.com/Binbiubiubiu/git-semver-tags/commit/47ecac574b86ee88d07709ca7cc399a2ad21cb96)
 
-- fix tests ([`e6c45cd`](https://github.com/Binbiubiubiu/git-semver-tags/commit/e6c45cd5c9b548f01ed67c03236b209b9b96f549) by Binbiubiubiu)
+- Fix tests &nbsp;-&nbsp; by @Binbiubiubiu [<samp>(e6c45cd)</samp>](https://github.com/Binbiubiubiu/git-semver-tags/commit/e6c45cd5c9b548f01ed67c03236b209b9b96f549)
 
-- fix windows tests ([`01e5c01`](https://github.com/Binbiubiubiu/git-semver-tags/commit/01e5c01ffe3fc0fcf91e294d1b3bb4cbc2f06270) by Binbiubiubiu)
+- Fix windows tests &nbsp;-&nbsp; by @Binbiubiubiu [<samp>(01e5c01)</samp>](https://github.com/Binbiubiubiu/git-semver-tags/commit/01e5c01ffe3fc0fcf91e294d1b3bb4cbc2f06270)
 
 
 ## v0.0.2 (2022-11-20)
 
-### Bugs fixed:
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes:
 
-- 修复文档问题 ([`4bd8445`](https://github.com/Binbiubiubiu/git-semver-tags/commit/4bd844509740e9585eda3ff9d9e0f995e9366a52) by Binbiubiubiu)
+- 修复文档问题 &nbsp;-&nbsp; by @Binbiubiubiu [<samp>(4bd8445)</samp>](https://github.com/Binbiubiubiu/git-semver-tags/commit/4bd844509740e9585eda3ff9d9e0f995e9366a52)
 
-- 删除多余的配置 ([`422bc34`](https://github.com/Binbiubiubiu/git-semver-tags/commit/422bc341c92f136dd868df3167564e608add4533) by Binbiubiubiu)
+- 删除多余的配置 &nbsp;-&nbsp; by @Binbiubiubiu [<samp>(422bc34)</samp>](https://github.com/Binbiubiubiu/git-semver-tags/commit/422bc341c92f136dd868df3167564e608add4533)
 
 
-### New feature:
+### &nbsp;&nbsp;&nbsp;🚀 Features:
 
-- init project ([`86d76db`](https://github.com/Binbiubiubiu/git-semver-tags/commit/86d76db316ce2772f3fdc3442f90a2504fd10361) by Binbiubiubiu)
+- Init project &nbsp;-&nbsp; by @Binbiubiubiu [<samp>(86d76db)</samp>](https://github.com/Binbiubiubiu/git-semver-tags/commit/86d76db316ce2772f3fdc3442f90a2504fd10361)
 
-- 完成 ([`3031b86`](https://github.com/Binbiubiubiu/git-semver-tags/commit/3031b86b5d9ec95c14d6379304c9f6516f308dea) by Binbiubiubiu)
+- 完成 &nbsp;-&nbsp; by @Binbiubiubiu [<samp>(3031b86)</samp>](https://github.com/Binbiubiubiu/git-semver-tags/commit/3031b86b5d9ec95c14d6379304c9f6516f308dea)
 
 
 <!-- generated by git-cliff -->
