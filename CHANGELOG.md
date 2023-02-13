@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## 0.0.10 (2023-02-13)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features:
+
+- Add `self_upgrade` feature &nbsp;-&nbsp; by @Binbiubiubiu [<samp>(01996e1)</samp>](https://github.com/Binbiubiubiu/git-semver-tags/commit/01996e18e39998f50948fa1e35c256828937918f)
+
+
 ## v0.0.9 (2023-02-11)
 
 ### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes:
