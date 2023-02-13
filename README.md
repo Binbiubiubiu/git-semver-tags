@@ -64,7 +64,7 @@ $ cargo binstall git-semver-tags
  Usage: git-semver-tags [OPTIONS] [COMMAND]
 
 Commands:
-  upgrade  upgrade version
+  upgrade  upgrade self version
   help     Print this message or the help of the given subcommand(s)
 
 Options:

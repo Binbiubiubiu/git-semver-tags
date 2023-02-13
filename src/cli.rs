@@ -32,7 +32,9 @@ pub struct Args {
 /// subcommand
 #[derive(Subcommand, Debug)]
 pub enum Commands {
-    /// upgrade version
+    /// upgrade self version
+    #[cfg(feature = "self_upgrade")]
+    #[cfg_attr(docsrs, doc(cfg(feature = "self_upgrade")))]
     Upgrade,
 }
 

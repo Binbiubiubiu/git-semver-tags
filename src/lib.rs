@@ -5,6 +5,7 @@
 
 use lazy_static::lazy_static;
 use regex::Regex;
+#[cfg(feature = "self_upgrade")]
 use self_update::cargo_crate_version;
 use std::{io::Write, process::Command};
 
@@ -34,9 +35,11 @@ fn semver_valid(version: &str) -> bool {
 }
 
 /// upgrade self version
+#[cfg(feature = "self_upgrade")]
+#[cfg_attr(docsrs, doc(cfg(feature = "self_upgrade")))]
 pub fn self_upgrade(is_test: bool) -> Result<(), Box<dyn std::error::Error>> {
-    let binding = clap::crate_authors!().split("<").collect::<Vec<_>>();
-    let authors = *binding.get(0).expect("get author name");
+    let binding = clap::crate_authors!().split('<').collect::<Vec<_>>();
+    let authors = binding.first().expect("get author name");
     let status = self_update::backends::github::Update::configure()
         .repo_owner(authors)
         .repo_name(clap::crate_name!())
