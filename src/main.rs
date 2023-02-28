@@ -9,7 +9,7 @@ fn main() {
         #[cfg(feature = "self_upgrade")]
         Some(Commands::Upgrade) => self_upgrade(false).expect("upgrade success"),
         _ => {
-            for tag in captures(&args).iter() {
+            for tag in captures(args).iter() {
                 println!("{}", tag);
             }
         }
