@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## 0.0.12 (2023-03-02)
+
+### &nbsp;&nbsp;&nbsp;Testing:
+
+- Refactor test code &nbsp;-&nbsp; by @Binbiubiubiu [<samp>(98f8395)</samp>](https://github.com/Binbiubiubiu/git-semver-tags/commit/98f83955431f833f4b3c7b68c6d410facb1c92f9)
+
+
 ## v0.0.11 (2023-02-28)
 
 ### &nbsp;&nbsp;&nbsp;Refactor:
